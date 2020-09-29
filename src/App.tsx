@@ -50,7 +50,12 @@ function TestComponent() {
     <br />
     What is the capital of <span style={{ color: "lightgreen" }}>{countries[countryIndex]}</span>?
     <br />
-    <form onSubmit={(e) => { setCountryIndex(countryIndex + 1); e.preventDefault(); }}>
+    <form
+      onSubmit={(e) => {
+        setCountryIndex(countryIndex + 1);
+        e.preventDefault();
+      }}
+    >
       <input
         autoFocus
         type="text"
