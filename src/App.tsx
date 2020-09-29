@@ -4,7 +4,7 @@ import './App.css';
 
 const { countries, capitals } = require("./data.json");
 
-function checkAnswerText(answerText: string, answer: string): boolean {
+function isAnswerCorrect(answerText: string, answer: string): boolean {
   return answerText.toLowerCase().trim() === answer.toLowerCase().trim();
 }
 
@@ -14,7 +14,7 @@ function TestComponent() {
   const [answerText, setAnswerText] = useState("");
 
   function handleAnswerChange(newAnswer: string) {
-    if (checkAnswerText(newAnswer, capitals[countryIndex])) {
+    if (isAnswerCorrect(newAnswer, capitals[countryIndex])) {
       setAnswerText("");
       setCountryIndex(countryIndex + 1);
       setCorrectCount(correctCount + 1);
@@ -29,24 +29,27 @@ function TestComponent() {
       Correct: {correctCount} / {countryIndex}
     </div>
     <br />
-    Previous Country: {countryIndex > 0 && countries[countryIndex - 1]}
+    Previous:
     <br />
-    Previous Capital: {countryIndex > 0 && capitals[countryIndex - 1]}
+    {countryIndex > 0 && countries[countryIndex - 1]} - {countryIndex > 0 && capitals[countryIndex - 1]}
     <br />
     <br />
-    What is the capital of <span style={{color: "lightgreen" }}>{countries[countryIndex]}</span>?
+    What is the capital of <span style={{ color: "lightgreen" }}>{countries[countryIndex]}</span>?
     <br />
-    <input
-      autoFocus
-      type="text"
-      onChange={e => {
-        handleAnswerChange(e.target.value);
-      }}
-      value={answerText}
-    />
-    <button
-      onClick={() => setCountryIndex(countryIndex + 1)}
-    >I don't know :(</button>
+    <form onSubmit={(e) => { setCountryIndex(countryIndex + 1); e.preventDefault(); }}>
+      <input
+        autoFocus
+        type="text"
+        onChange={e => {
+          handleAnswerChange(e.target.value);
+        }}
+        value={answerText}
+      />
+      <input type="submit"
+        onClick={() => setCountryIndex(countryIndex + 1)}
+        value="Idk"
+      />
+    </form>
   </div>;
 }
 
