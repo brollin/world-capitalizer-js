@@ -4,6 +4,20 @@ import './App.css';
 
 const { countries, capitals } = require("./data.json");
 
+/**
+ * Shuffles multiple arrays in place in the same way.
+ */
+function shuffleArrays(a: any[], b: any[]) {
+  for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+      [b[i], b[j]] = [b[j], b[i]];
+  }
+  return [a, b];
+}
+
+shuffleArrays(countries, capitals);
+
 function isAnswerCorrect(answerText: string, answer: string): boolean {
   return answerText.toLowerCase().trim() === answer.toLowerCase().trim();
 }
@@ -46,7 +60,6 @@ function TestComponent() {
         value={answerText}
       />
       <input type="submit"
-        onClick={() => setCountryIndex(countryIndex + 1)}
         value="Idk"
       />
     </form>
