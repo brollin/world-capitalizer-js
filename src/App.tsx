@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import logo from './World-Map.svg';
 import './App.css';
 
 const { countries, capitals } = require("./data.json");
@@ -19,7 +18,7 @@ function shuffleArrays(a: any[], b: any[]) {
 shuffleArrays(countries, capitals);
 
 function normalizeText(text: string): string {
-  return text.toLowerCase().trim().replace(/[\s'-&]/g, "");
+  return text.toLowerCase().trim().replace(/[\s'\-&]/g, "");
 }
 function isAnswerCorrect(answerText: string, answer: string): boolean {
   return normalizeText(answerText) === normalizeText(answer);
@@ -42,6 +41,14 @@ function Quiz() {
   }
 
   return <div>
+    <iframe
+      title="googleMap"
+      width="450"
+      height="450"
+      style={{ border: 0 }}
+      src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyDS40cPM6UITBJsQwRHIFYgJK2V01ay8Bo&q=${encodeURIComponent(countries[countryIndex])}`}
+    >
+    </iframe>
     <div style={{ color: "cyan" }}>
       Correct: {correctCount} / {countryIndex}
     </div>
@@ -52,6 +59,7 @@ function Quiz() {
     <br />
     <br />
     What is the capital of <span style={{ color: "lightgreen" }}>{countries[countryIndex]}</span>?
+    <br />
     <br />
     <form
       onSubmit={(e) => {
@@ -78,7 +86,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <Quiz />
       </header>
     </div>
