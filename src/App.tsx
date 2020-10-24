@@ -40,7 +40,7 @@ function Quiz() {
     setAnswerText(newAnswer);
   }
 
-  return <div>
+  const interactiveMap = (
     <iframe
       title="googleMap"
       width="350"
@@ -49,6 +49,10 @@ function Quiz() {
       src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyDS40cPM6UITBJsQwRHIFYgJK2V01ay8Bo&q=${encodeURIComponent(countries[countryIndex])}`}
     >
     </iframe>
+  );
+
+  return <div>
+    {interactiveMap}
     <br />
     <div style={{ color: "cyan" }}>
       Correct: {correctCount} / {countryIndex}
@@ -77,7 +81,7 @@ function Quiz() {
         value={answerText}
       />
       <input type="submit"
-        value="Idk"
+        value="idk"
       />
     </form>
   </div>;
