@@ -18,8 +18,11 @@ function shuffleArrays(a: any[], b: any[]) {
 
 shuffleArrays(countries, capitals);
 
+function normalizeText(text: string): string {
+  return text.toLowerCase().trim().replace(/[\s'-&]/g, "");
+}
 function isAnswerCorrect(answerText: string, answer: string): boolean {
-  return answerText.toLowerCase().trim() === answer.toLowerCase().trim();
+  return normalizeText(answerText) === normalizeText(answer);
 }
 
 function Quiz() {
