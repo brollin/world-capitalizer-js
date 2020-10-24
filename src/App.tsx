@@ -9,9 +9,9 @@ const { countries, capitals } = require("./data.json");
  */
 function shuffleArrays(a: any[], b: any[]) {
   for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-      [b[i], b[j]] = [b[j], b[i]];
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+    [b[i], b[j]] = [b[j], b[i]];
   }
   return [a, b];
 }
@@ -22,7 +22,7 @@ function isAnswerCorrect(answerText: string, answer: string): boolean {
   return answerText.toLowerCase().trim() === answer.toLowerCase().trim();
 }
 
-function TestComponent() {
+function Quiz() {
   const [correctCount, setCorrectCount] = useState(0);
   const [countryIndex, setCountryIndex] = useState(0);
   const [answerText, setAnswerText] = useState("");
@@ -76,7 +76,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <TestComponent />
+        <Quiz />
       </header>
     </div>
   );
