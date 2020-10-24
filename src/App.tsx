@@ -43,12 +43,13 @@ function Quiz() {
   return <div>
     <iframe
       title="googleMap"
-      width="450"
-      height="450"
+      width="350"
+      height="350"
       style={{ border: 0 }}
       src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyDS40cPM6UITBJsQwRHIFYgJK2V01ay8Bo&q=${encodeURIComponent(countries[countryIndex])}`}
     >
     </iframe>
+    <br />
     <div style={{ color: "cyan" }}>
       Correct: {correctCount} / {countryIndex}
     </div>
